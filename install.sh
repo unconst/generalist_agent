@@ -210,7 +210,7 @@ printf "  ${BOLD}Authentication${NC}\n\n"
 
 # Check .env for CURSOR_API_KEY first
 if [ -z "${CURSOR_API_KEY:-}" ] && [ -f "$INSTALL_DIR/.env" ]; then
-    _env_key=$(grep "^CURSOR_API_KEY=" "$INSTALL_DIR/.env" 2>/dev/null | cut -d'=' -f2-)
+    _env_key=$(grep "^CURSOR_API_KEY=" "$INSTALL_DIR/.env" 2>/dev/null | cut -d'=' -f2- || true)
     if [ -n "$_env_key" ]; then
         export CURSOR_API_KEY="$_env_key"
     fi
